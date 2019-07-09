@@ -379,7 +379,7 @@ If (($enableRemoteInstall -and !([string]::IsNullOrEmpty($remoteFarmServers))) -
     }
 }
 
-If (Confirm-LocalSession) {StartTracing} # Only start tracing if this is a local session
+StartTracing # Only start tracing if this is a local session
 If (!$env:StartDate) {$env:StartDate = Get-Date}
 Write-Host -ForegroundColor White "-----------------------------------"
 Write-Host -ForegroundColor White "| Automated SP$spYear install script |"

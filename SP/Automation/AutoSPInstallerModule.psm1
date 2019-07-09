@@ -6839,7 +6839,6 @@ Function Start-RemoteInstaller ($server, $password, $inputFile)
 
 Function Confirm-LocalSession
 {
-    Return $true
     # Another way
     # If ((Get-Process -Id $PID).ProcessName -eq "wsmprovhost") {Return $false}
     If ($Host.Name -eq "ServerRemoteHost") {Return $false}
