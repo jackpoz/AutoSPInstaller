@@ -250,8 +250,8 @@ Function StartTracing ($server)
         $regKey = Get-Item -Path "HKLM:\SOFTWARE\AutoSPInstaller\" -ErrorAction SilentlyContinue
         If ($regKey) {$script:Logtime = $regkey.GetValue("LogTime")}
         If ([string]::IsNullOrEmpty($logtime)) {$script:Logtime = Get-Date -Format yyyy-MM-dd_h-mm}
-        If ($server) {$script:LogFile = "$env:USERPROFILE\Desktop\AutoSPInstaller-$server-$script:Logtime.log"}
-        else {$script:LogFile = "$env:USERPROFILE\Desktop\AutoSPInstaller-$script:Logtime.log"}
+        If ($server) {$script:LogFile = "C:\AutoSPInstaller-$server-$script:Logtime.log"}
+        else {$script:LogFile = "C:\AutoSPInstaller-$script:Logtime.log"}
         Start-Transcript -Path $logFile -Append -Force
         If ($?) {$script:isTracing = $true}
     }
@@ -6839,6 +6839,7 @@ Function Start-RemoteInstaller ($server, $password, $inputFile)
 
 Function Confirm-LocalSession
 {
+    Return $true
     # Another way
     # If ((Get-Process -Id $PID).ProcessName -eq "wsmprovhost") {Return $false}
     If ($Host.Name -eq "ServerRemoteHost") {Return $false}
